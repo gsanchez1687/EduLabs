@@ -18,10 +18,8 @@ $db = $database->connect();
 $method = $_SERVER['REQUEST_METHOD'];
 $requestPath = $_SERVER['PATH_INFO'] ?? ''; // Si no existe, se establece como una cadena vacía
 $request = explode('/', trim($requestPath, '/'));
-
 $endpoint = $request[0];
 $data = json_decode(file_get_contents("php://input"), true);
-
 switch ($endpoint) {
     case 'register':
         if ($method == 'POST') {
@@ -41,15 +39,14 @@ switch ($endpoint) {
         }
         break;
 
-    case 'posts':
+    case 'createpost':
         $postController = new PostController($db);
 
         // Validar token de autenticación (simple, basado en token en cabecera)
         $headers = getallheaders();
         $token = isset($headers['Authorization']) ? base64_decode($headers['Authorization']) : null;
-
-        if ($method == 'POST' && $token) {
-            echo $postController->create($data, $token);
+        if ($method == 'POST' && $data['userid']) {
+            echo $postController->create($data, $data['userid']);
         } elseif ($method == 'GET' && isset($request[1])) {
             $categoryId = intval($request[1]);
             echo $postController->getByCategory($categoryId);
@@ -57,6 +54,20 @@ switch ($endpoint) {
             echo json_encode(['message' => 'Método o token inválido']);
         }
         break;
+
+        case 'postlist':
+            $postController = new PostController($db);
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                if (isset($request[1]) && is_numeric($request[1])) {
+                    // GET /api/posts/{categoryid}
+                    $categoryId = intval($request[1]);
+                    $postController->getPostsByCategory($categoryId);
+                }else{
+                    // GET /api/posts
+                    $postController->getAllPosts();
+                }
+            }
+            break;
 
     default:
         echo json_encode(['message' => 'Endpoint no encontrado']);

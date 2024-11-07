@@ -12,7 +12,7 @@ class User {
         $this->conn = $db;
     }
 
-    public function register() {
+    public function register(): bool {
         $query = "INSERT INTO " . $this->table . " SET name=:name, email=:email, password=:password";
         $stmt = $this->conn->prepare($query);
 
@@ -27,7 +27,7 @@ class User {
         return $stmt->execute();
     }
 
-    public function login() {
+    public function login(): bool {
         $query = "SELECT id, name, password FROM " . $this->table . " WHERE email = :email LIMIT 0,1";
         
         $stmt = $this->conn->prepare($query);
