@@ -37,7 +37,7 @@ class User {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
+        if ($user && password_verify($this->password, $user['password'])) {
             return $user;
         }
         return false;
