@@ -27,7 +27,7 @@ class User {
         return $stmt->execute();
     }
 
-    public function login(): bool {
+    public function login(): array {
         $query = "SELECT id, name, password FROM " . $this->table . " WHERE email = :email LIMIT 0,1";
         
         $stmt = $this->conn->prepare($query);

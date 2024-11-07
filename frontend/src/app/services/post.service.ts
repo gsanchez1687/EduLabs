@@ -8,6 +8,7 @@ import { Post } from '../models/posts.model';
 })
 export class PostService {
   private apiUrl = 'http://localhost:8888/EduLabs/api/postlist/';
+  private ApiCreatePost = 'http://localhost:8888/EduLabs/api/createpost/';
 
   constructor(private http: HttpClient) { }
 
@@ -41,5 +42,9 @@ export class PostService {
         throw error;
       })
     );
+  }
+
+  createPost(post: Post): Observable<Post> {
+    return this.http.post<Post>(this.ApiCreatePost, post);
   }
 }

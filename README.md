@@ -33,4 +33,16 @@ He realizado este proyecto con php puro sin framework, utilizando clases un prog
 2. Typescript
 3. Bootstrap
 ```
+
+
 ![Captura](captura1.png)
+
+![Captura](captura2.png)
+
+![Captura](captura3.png)
+
+![Captura](captura4.png)
+
+![Captura](captura5.png)
+
+![Captura](captura6.png)

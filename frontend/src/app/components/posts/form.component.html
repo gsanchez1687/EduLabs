@@ -1,23 +1,25 @@
-<div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h2 class="mb-4 text-primary">Crear un nuevo post</h2>
-
-        <form [formGroup]="postForm">
-          <div class="mb-3">
-            <label for="title" class="form-label">Título</label>
-            <input type="text" class="form-control" id="title" formControlName="title">
-          </div>
-
-          <div class="mb-3">
-            <label for="content" class="form-label">Contenido</label>
-            <textarea class="form-control" id="content" rows="3" formControlName="content"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">
-            Guardar
-          </button>
-        </form>
-      </div>
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Título:</label>
+    <input id="title" type="text" formControlName="title" />
+    <div *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched">
+      <small *ngIf="postForm.get('title')?.errors?.['required']">El título es obligatorio.</small>
+      <small *ngIf="postForm.get('title')?.errors?.['minlength']">
+        El título debe tener al menos 3 caracteres.
+      </small>
     </div>
   </div>
+
+  <div>
+    <label for="content">Contenido:</label>
+    <textarea id="content" formControlName="content"></textarea>
+    <div *ngIf="postForm.get('content')?.invalid && postForm.get('content')?.touched">
+      <small *ngIf="postForm.get('content')?.errors?.['required']">El contenido es obligatorio.</small>
+      <small *ngIf="postForm.get('content')?.errors?.['minlength']">
+        El contenido debe tener al menos 10 caracteres.
+      </small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="postForm.invalid">Crear Post</button>
+</form>
