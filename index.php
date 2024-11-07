@@ -26,7 +26,7 @@ switch ($endpoint) {
             $authController = new AuthController($db);
             echo $authController->register($data);
         } else {
-            echo json_encode(['message' => 'Método no permitido']);
+            echo json_encode(['message' => 'Method not allowed']);
         }
         break;
 
@@ -35,7 +35,7 @@ switch ($endpoint) {
             $authController = new AuthController($db);
             echo $authController->login($data);
         } else {
-            echo json_encode(['message' => 'Método no permitido']);
+            echo json_encode(['message' => 'Method not allowed']);
         }
         break;
 
@@ -51,7 +51,7 @@ switch ($endpoint) {
             $categoryId = intval($request[1]);
             echo $postController->getByCategory($categoryId);
         } else {
-            echo json_encode(['message' => 'Método o token inválido']);
+            echo json_encode(['message' => 'Invalid method or token']);
         }
         break;
 
@@ -70,6 +70,6 @@ switch ($endpoint) {
             break;
 
     default:
-        echo json_encode(['message' => 'Endpoint no encontrado']);
+        echo json_encode(['message' => 'Endpoint not found']);
 }
 ?>
