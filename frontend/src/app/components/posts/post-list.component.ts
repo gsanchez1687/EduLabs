@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/posts.model';
 
+
 @Component({
   selector: 'app-post-list',
   standalone: true,

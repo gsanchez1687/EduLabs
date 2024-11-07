@@ -1,4 +1,5 @@
 <?php
+//Se crea la clase Databse para la configuración de la base de datos
 class Database {
     private $host = '127.0.0.1';
     private $port = '8889';
@@ -7,6 +8,8 @@ class Database {
     private $password = 'root';
     public $conn;
 
+
+    //Se crea la función para la configuración de la base de datos
     public function connect() {
         $this->conn = null;
         try {

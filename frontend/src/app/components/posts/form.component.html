@@ -1,0 +1,23 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="mb-4 text-primary">Crear un nuevo post</h2>
+
+        <form [formGroup]="postForm">
+          <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+          </div>
+
+          <div class="mb-3">
+            <label for="content" class="form-label">Contenido</label>
+            <textarea class="form-control" id="content" rows="3" formControlName="content"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -4,10 +4,13 @@ require('./models/User.php');
 class AuthController {
     private $db;
 
+    // Constructor
+
     public function __construct($db) {
         $this->db = $db;
     }
 
+    //metodo Register para registrar un usuario
     public function register($data) {
         try {
             $user = new User($this->db);
@@ -25,6 +28,7 @@ class AuthController {
         }
     }
 
+    //metodo Login para iniciar sesion
     public function login($data) {
         try {
             $user = new User($this->db);

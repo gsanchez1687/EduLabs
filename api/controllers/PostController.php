@@ -4,10 +4,12 @@ require('./models/Post.php');
 class PostController {
     private $db;
 
+    
     public function __construct($db) {
         $this->db = $db;
     }
 
+  
     public function create($data, $userId) {
         try {
             $post = new Post($this->db);
