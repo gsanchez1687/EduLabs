@@ -8,6 +8,16 @@ Node 18.x o superior
 Angular 14.x o superior
 ```
 
+## DB config
+```
+private $host = '127.0.0.1';
+private $port = '8889';
+private $db_name = 'edulabs';
+private $username = 'root';
+private $password = 'root';
+
+```
+
 ## Feature
 ```
 He realizado este proyecto con php puro sin framework, utilizando clases un programacion orientada a objetos con metodologias SOLID.
@@ -18,4 +28,9 @@ He realizado este proyecto con php puro sin framework, utilizando clases un prog
 
 
 ## Capturas
+```
+1. Angular18
+2. Typescript
+3. Bootstrap
+```
 ![Captura](captura1.png)
